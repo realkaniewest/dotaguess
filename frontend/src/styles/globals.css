@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dota-dark text-white min-h-screen;
+    font-family: 'Nunito', sans-serif;
+    background: radial-gradient(ellipse at top, #1a1a2e 0%, #0a0a0f 60%);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #c89b3c #12121a;
+  }
+
+  *::-webkit-scrollbar { width: 6px; }
+  *::-webkit-scrollbar-track { background: #12121a; }
+  *::-webkit-scrollbar-thumb {
+    background-color: #c89b3c;
+    border-radius: 3px;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply px-4 py-2.5 sm:px-6 sm:py-3 bg-dota-gold text-black font-bold rounded-xl border border-dota-gold-light
+           hover:bg-dota-gold-light transition-all duration-200 cursor-pointer
+           shadow-lg hover:shadow-dota-gold/50 text-sm sm:text-base;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  .panel {
+    @apply bg-dota-panel border border-dota-border rounded-2xl;
+  }
+
+  .hint-cell {
+    @apply flex items-center justify-center p-1 sm:p-2 rounded-lg sm:rounded-xl text-xs font-bold text-center min-h-[40px] sm:min-h-[48px];
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .hint-correct { @apply bg-dota-green text-white; }
+  .hint-partial { @apply bg-dota-yellow text-black; }
+  .hint-wrong   { @apply bg-gray-700 text-gray-300; }
+
+  .gold-text {
+    @apply text-dota-gold;
+    font-family: 'Cinzel', serif;
+    text-shadow: 0 0 12px rgba(200, 155, 60, 0.6), 0 0 24px rgba(200, 155, 60, 0.2);
+    letter-spacing: 0.05em;
+  }
+
+  .glow-border {
+    box-shadow: 0 0 15px rgba(200, 155, 60, 0.3), inset 0 0 15px rgba(200, 155, 60, 0.05);
+  }
+}
+
+.hero-card-reveal {
+  animation: flipIn 0.6s ease-out forwards;
+}
+
+@keyframes flipIn {
+  0%   { transform: rotateY(90deg); opacity: 0; }
+  100% { transform: rotateY(0);     opacity: 1; }
+}
+
+/* Силуэт — белый на тёмном фоне */
+.silhouette-img {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.mode-card {
+  background: linear-gradient(135deg, #12121a 0%, #1a1a2e 100%);
+  border: 1px solid #2a2a3a;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.mode-card:hover {
+  border-color: #c89b3c;
+  box-shadow: 0 0 20px rgba(200, 155, 60, 0.2);
+  transform: translateY(-3px);
+}
+
+.attr-str { color: #e74c3c; }
+.attr-agi { color: #2ecc71; }
+.attr-int { color: #3498db; }
+.attr-all { color: #9b59b6; }
